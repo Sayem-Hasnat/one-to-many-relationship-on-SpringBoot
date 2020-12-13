@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/empController/save}" th:object="${employeeDto}" method="post">
+
+    <input type="hidden" th:field="*{id}"/>
+<!--    for update purpose-->
+    Name: <input type="text" th:field="*{name}"/><br><br>
+    Age: <input type="text" th:field="*{age}"/><br><br>
+    Address: <input type="text" th:field="*{address}"/><br><br>
+    Salary: <input type="text" th:field="*{salary}"/><br><br>
+
+    Designation:
+    <select th:field="*{designationId}">
+        <option th:each="designation : ${designationListDto}"
+                th:value="${designation.designationId}"
+                th:text="${designation.designationName}"></option>
+    </select> <br><br>
+    Type:
+    <th:block th:each="typename:${typeList}">
+        <input type="radio" th:field="*{type}" th:value="${typename}"/>
+        <label th:text="${typename}"></label>
+    </th:block>
+
+    <button type="submit">Save Employee</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+       <th>NAME</th>
+       <th>Age</th>
+       <th>Address</th>
+       <th>Salary</th>
+       <th>Designation</th>
+       <th>Type</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="employee:${employeeList}">
+        <tr>
+            <td th:text="${employee.id}"></td>
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.age}"></td>
+            <td th:text="${employee.address}"></td>
+            <td th:text="${employee.salary}"></td>
+            <td th:text="${employee.designation.designationName}"></td>
+            <td th:text="${employee.type}"></td>
+            <td><a th:href="@{'/empController/update/'+${employee.id}}">Update</a></td>
+            <td><a th:href="@{'/empController/delete/'+${employee.id}}">Delete</a></td>
+        </tr>
+
+    </th:block>
+
+    </tbody>
+</table>
+<a th:href="@{/empController/employeeAddPage}">Add New Employee</a>
+
+</body>
+</html>

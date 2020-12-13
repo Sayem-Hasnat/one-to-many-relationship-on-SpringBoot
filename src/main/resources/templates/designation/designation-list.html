@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Designation</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Designation</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="designation:${designationList}">
+        <tr>
+            <td th:text="${designation.designationId}"></td>
+            <td th:text="${designation.designationName}"></td>
+
+<!--            <td><a th:href="@{'/empController/update/'+${employee.id}}">Update</a></td>-->
+<!--            <td><a th:href="@{'/empController/delete/'+${employee.id}}">Delete</a></td>-->
+        </tr>
+
+    </th:block>
+    </tbody>
+</table>
+<a th:href="@{/desigCon/addDesignation}">Add New Designation</a>
+</body>
+</html>
